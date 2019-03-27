@@ -7,8 +7,8 @@ Goal:
     the actual time I spent on it, since the replay function in my drawing program doesn't 
     record my process, but rather each stroke of the brush is a frame.)
 
-Current step: Read in data file.
-    Substep: Convert all time into same unit and get percentages.
+Current step: create base bar graph (to put images in later)
+    Substep: create base of bar graph (x-axis: 7 parts, y-axis: percentage of total time)
 */
 
 var image1data; 
@@ -35,7 +35,7 @@ function loadData(){
     for(var i=0; i < image1table.getRowCount(); i++){
         var row = image1table.getRow();
         var filnam = row.get("Image Title"); // getting "file names"
-        var timestam = row.get("Total frames");
+        var timestam = row.get("Percentage of total time");
         image1data[i] = new ImageOne(filnam,timestam);
     }
 }
