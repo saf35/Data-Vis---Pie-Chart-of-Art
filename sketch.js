@@ -7,8 +7,7 @@ Goal:
     the actual time I spent on it, since the replay function in my drawing program doesn't 
     record my process, but rather each stroke of the brush is a frame.)
 
-Current step: create base bar graph (to put images in later)
-    Substep: create base of bar graph (x-axis: 7 parts, y-axis: percentage of total time)
+Current step: create base pie chart (to put images in later)
 */
 
 var image1data; 
@@ -47,7 +46,12 @@ class ImageOne {
     }
 
     display(){ // displaying the graph
-
+        var innerCircleW = windowWidth/4;
+        var innerCircleH = windowHeight/4;
+        var outerCircleW = 2*windowWidth/5;
+        var outerCircleH = 2*windowHeight/5;
+        var innerCircle = ellipse(windowWidth/2,windowHeight/2,innerCircleW,innerCircleH);
+        var outerCircle = ellipse(windowWidth/2,windowHeight/2,outerCircleW,outerCircleH);
     }
 
 }
