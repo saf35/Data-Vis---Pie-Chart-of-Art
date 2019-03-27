@@ -10,12 +10,15 @@ Goal:
 Resources:
     - Used p5.js example on pie charts to help build the pie chart:
         https://p5js.org/examples/form-pie-chart.html
+        - Used this webpage to help explain arc() function documentation:
+            https://www.geeksforgeeks.org/p5-js-arc-function/ 
 
 Current step: create base pie chart (to put images in later)
 */
 
 var image1data; 
 var image1table;
+var image1arcs;
 
 function preload(){
     image1table = loadTable("data/image1.csv", "header");
@@ -39,14 +42,16 @@ function loadData(){
         var row = image1table.getRow();
         var filnam = row.get("Image Title"); // getting "file names"
         var timestam = row.get("Percentage of total time");
-        image1data[i] = new ImageOne(filnam,timestam);
+        var arcangle = row.get("Angle not cummulative"); // getting arc size for each part of the pie chart
+        image1data[i] = new ImageOne(filnam,timestam,arcangle);
     }
 }
 
 class ImageOne {
-    constructor(nameoffile,timemark){
+    constructor(nameoffile,timemark,sliceangle){
         this.nameoffile = Number(nameoffile);
-        this.timemark = Number(timemark)
+        this.timemark = Number(timemark);
+        this.sliceangle = Number(sliceangle);
     }
 
     display(){ 
@@ -56,6 +61,19 @@ class ImageOne {
         var outerCircleW = 7*windowWidth/8;
         var innerCircle = ellipse(windowWidth/2,windowHeight/2,innerCircleW,innerCircleW);
         var outerCircle = ellipse(windowWidth/2,windowHeight/2,outerCircleW,outerCircleW);
+        
+        // creating pie chart
+        for(let j=0; j < sliceangle.length; j++){
+            noFill();
+            arc(
+                windowWidth/2,
+                windowHeight/2,
+                innerCircleW,
+                innerCircleW,
+                sliceangle[i-1],
+                sliceangle[i]
+            )
+        }
     }
 
 }
