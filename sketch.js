@@ -35,6 +35,19 @@ function loadData(){
     for(var i=0; i < image1table.getRowCount(); i++){
         var row = image1table.getRow();
         var filnam = row.get("Image Title"); // getting "file names"
-        var timestamp = row.get("Time");
+        var timestam = row.get("Total frames");
+        image1data[i] = new ImageOne(filnam,timestam);
     }
+}
+
+class ImageOne {
+    constructor(nameoffile,timemark){
+        this.nameoffile = Number(nameoffile);
+        this.timemark = Number(timemark)
+    }
+
+    display(){ // displaying the graph
+
+    }
+
 }
