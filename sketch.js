@@ -7,6 +7,10 @@ Goal:
     the actual time I spent on it, since the replay function in my drawing program doesn't 
     record my process, but rather each stroke of the brush is a frame.)
 
+Resources:
+    - Used p5.js example on pie charts to help build the pie chart:
+        https://p5js.org/examples/form-pie-chart.html
+
 Current step: create base pie chart (to put images in later)
 */
 
@@ -45,13 +49,13 @@ class ImageOne {
         this.timemark = Number(timemark)
     }
 
-    display(){ // displaying the graph
-        var innerCircleW = windowWidth/4;
-        var innerCircleH = windowHeight/4;
-        var outerCircleW = 2*windowWidth/5;
-        var outerCircleH = 2*windowHeight/5;
-        var innerCircle = ellipse(windowWidth/2,windowHeight/2,innerCircleW,innerCircleH);
-        var outerCircle = ellipse(windowWidth/2,windowHeight/2,outerCircleW,outerCircleH);
+    display(){ 
+        stroke(0);
+        strokeWeight(4);
+        var innerCircleW = 5*windowWidth/8;
+        var outerCircleW = 7*windowWidth/8;
+        var innerCircle = ellipse(windowWidth/2,windowHeight/2,innerCircleW,innerCircleW);
+        var outerCircle = ellipse(windowWidth/2,windowHeight/2,outerCircleW,outerCircleW);
     }
 
 }
