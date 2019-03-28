@@ -15,6 +15,7 @@ Resources:
             https://www.geeksforgeeks.org/p5-js-arc-function/ 
 
 Current step: create base pie chart (to put images in later)
+    Substep: still having issues with displaying arcs, just different issues
 */
 
 // var outerCircleW = 7*windowWidth/8;
@@ -48,7 +49,7 @@ function loadData(){
 
     for(var i=0; i < image1table.getRowCount(); i++){
         var row = image1table.getRow(i);
-        var arcangle = row.get("angle_not_cummulative"); // getting arc size for each part of the pie chart
+        var arcangle = row.get("angle_from_zero"); // getting arc size for each part of the pie chart
         
         image1data[i] = new ImageOne(arcangle);
     }
@@ -57,7 +58,7 @@ function loadData(){
 class ImageOne {
     constructor(sliceangle){
         
-        this.sliceangle = Number(sliceangle);
+        this.angleslice = Number(sliceangle);
         
     }
 
@@ -65,15 +66,13 @@ class ImageOne {
         stroke(255);
         strokeWeight(2);
         var innerCircleW = 500;
-        var innerCircle = ellipse(650,350,innerCircleW,innerCircleW);
+        ellipse(650,350,innerCircleW,innerCircleW);
         
         // creating pie chart
-        for(let j=1; j < this.sliceangle.length; j++){
-            stroke(150);
-            strokeWeight(2);
-            console.log(image1data);
-            arc(650,350,500,500,this.sliceangle[j-1],this.sliceangle[j])
-        }
+        stroke(150);
+        strokeWeight(2);
+        // console.log(this.angleslice);
+        arc(650,350,500,500,0,this.angleslice)
     }
 
 }
