@@ -24,7 +24,7 @@ var image1table;
 var image1arcs;
 
 function preload(){
-    image1table = loadTable("data/image1.csv", "header");
+    image1table = loadTable("data/angles.csv");
 }
 
 function setup(){
@@ -60,7 +60,7 @@ class ImageOne {
         stroke(255);
         strokeWeight(2);
         var innerCircleW = 500;
-        var innerCircle = ellipse(700,400,innerCircleW,innerCircleW);
+        var innerCircle = ellipse(650,350,innerCircleW,innerCircleW);
         
         // creating pie chart
         let lastAngle = 0;
@@ -68,8 +68,8 @@ class ImageOne {
             stroke(255);
             strokeWeight(2);
             arc(
-                700,
-                400,
+                650,
+                350,
                 500,
                 500,
                 lastAngle,
