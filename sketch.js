@@ -24,12 +24,14 @@ var image1table;
 var image1arcs;
 
 function preload(){
-    image1table = loadTable("data/angles.csv");
+    image1table = loadTable("data/angles.csv", "header");
+    //console.log(image1table)
 }
 
 function setup(){
     createCanvas(windowWidth,windowHeight);
     loadData();
+  
 }
 
 function draw(){
@@ -47,13 +49,16 @@ function loadData(){
     for(var i=0; i < image1table.getRowCount(); i++){
         var row = image1table.getRow(i);
         var arcangle = row.get("Angle not cummulative"); // getting arc size for each part of the pie chart
+        
         image1data[i] = new ImageOne(arcangle);
     }
 }
 
 class ImageOne {
     constructor(sliceangle){
+        
         this.sliceangle = Number(sliceangle);
+        
     }
 
     display(){ 
@@ -67,14 +72,10 @@ class ImageOne {
         for(let j=1; j < image1data.length; j++){
             stroke(255);
             strokeWeight(2);
-            arc(
-                650,
-                350,
-                500,
-                500,
-                lastAngle,
-                lastAngle + image1data[j]
-            )
+            //console.log(this.sliceangle)
+            //arc(650,350,500,500,lastAngle,lastAngle + image1data[j])
+            //arc(650,350,500,500,30, 300,20)
+            arc(50, 50, 80, 80, 0, PI + QUARTER_PI);
         }
     }
 
