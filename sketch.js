@@ -16,6 +16,9 @@ Resources:
 Current step: create base pie chart (to put images in later)
 */
 
+// var outerCircleW = 7*windowWidth/8;
+// var outerCircle = ellipse(windowWidth/2,windowHeight/2,outerCircleW,outerCircleW);
+
 var image1data; 
 var image1table;
 var image1arcs;
@@ -31,6 +34,9 @@ function setup(){
 
 function draw(){
     background(255); // black background, to make darker any transparent images
+    for(var k=0; k<image1data.length;k++){
+        image1data[k].display();
+    }
 }
 
 function loadData(){
@@ -58,9 +64,7 @@ class ImageOne {
         stroke(0);
         strokeWeight(4);
         var innerCircleW = 5*windowWidth/8;
-        var outerCircleW = 7*windowWidth/8;
         var innerCircle = ellipse(windowWidth/2,windowHeight/2,innerCircleW,innerCircleW);
-        var outerCircle = ellipse(windowWidth/2,windowHeight/2,outerCircleW,outerCircleW);
         
         // creating pie chart
         for(let j=0; j < sliceangle.length; j++){
