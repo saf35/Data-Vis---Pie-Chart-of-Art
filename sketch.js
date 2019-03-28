@@ -33,7 +33,7 @@ function setup(){
 }
 
 function draw(){
-    background(255); // black background, to make darker any transparent images
+    background(0); // black background, to make darker any transparent images
     for(var k=0; k<image1data.length;k++){
         image1data[k].display();
     }
@@ -45,37 +45,35 @@ function loadData(){
     image1data = []; // array (size depends on table)
 
     for(var i=0; i < image1table.getRowCount(); i++){
-        var row = image1table.getRow();
-        var filnam = row.get("Image Title"); // getting "file names"
-        var timestam = row.get("Percentage of total time");
+        var row = image1table.getRow(i);
         var arcangle = row.get("Angle not cummulative"); // getting arc size for each part of the pie chart
-        image1data[i] = new ImageOne(filnam,timestam,arcangle);
+        image1data[i] = new ImageOne(arcangle);
     }
 }
 
 class ImageOne {
-    constructor(nameoffile,timemark,sliceangle){
-        this.nameoffile = Number(nameoffile);
-        this.timemark = Number(timemark);
+    constructor(sliceangle){
         this.sliceangle = Number(sliceangle);
     }
 
     display(){ 
-        stroke(0);
-        strokeWeight(4);
-        var innerCircleW = 5*windowWidth/8;
-        var innerCircle = ellipse(windowWidth/2,windowHeight/2,innerCircleW,innerCircleW);
+        stroke(255);
+        strokeWeight(2);
+        var innerCircleW = 500;
+        var innerCircle = ellipse(700,400,innerCircleW,innerCircleW);
         
         // creating pie chart
-        for(let j=0; j < sliceangle.length; j++){
-            noFill();
+        let lastAngle = 0;
+        for(let j=1; j < image1data.length; j++){
+            stroke(255);
+            strokeWeight(2);
             arc(
-                windowWidth/2,
-                windowHeight/2,
-                innerCircleW,
-                innerCircleW,
-                sliceangle[i-1],
-                sliceangle[i]
+                700,
+                400,
+                500,
+                500,
+                lastAngle,
+                lastAngle + image1data[j]
             )
         }
     }
