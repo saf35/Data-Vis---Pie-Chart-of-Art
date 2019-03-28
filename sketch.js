@@ -10,6 +10,7 @@ Goal:
 Resources:
     - Used p5.js example on pie charts to help build the pie chart:
         https://p5js.org/examples/form-pie-chart.html
+        https://p5js.org/reference/#/p5/arc (more updated than above)
         - Used this webpage to help explain arc() function documentation:
             https://www.geeksforgeeks.org/p5-js-arc-function/ 
 
@@ -24,7 +25,7 @@ var image1table;
 var image1arcs;
 
 function preload(){
-    image1table = loadTable("data/angles.csv", "header");
+    image1table = loadTable("data/image1.csv", "header");
     //console.log(image1table)
 }
 
@@ -48,7 +49,7 @@ function loadData(){
 
     for(var i=0; i < image1table.getRowCount(); i++){
         var row = image1table.getRow(i);
-        var arcangle = row.get("Angle not cummulative"); // getting arc size for each part of the pie chart
+        var arcangle = row.get("angle_from_zero"); // getting arc size for each part of the pie chart
         
         image1data[i] = new ImageOne(arcangle);
     }
@@ -69,13 +70,10 @@ class ImageOne {
         
         // creating pie chart
         let lastAngle = 0;
-        for(let j=1; j < image1data.length; j++){
-            stroke(255);
+        for(let j=1; j < this.sliceangle.length; j++){
+            stroke(150);
             strokeWeight(2);
-            //console.log(this.sliceangle)
-            //arc(650,350,500,500,lastAngle,lastAngle + image1data[j])
-            //arc(650,350,500,500,30, 300,20)
-            arc(50, 50, 80, 80, 0, PI + QUARTER_PI);
+            arc(650,350,500,500,lastAngle,lastAngle + this.sliceangle[j])
         }
     }
 
