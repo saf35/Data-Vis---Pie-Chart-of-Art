@@ -26,7 +26,6 @@ var image1arcs;
 
 function preload(){
     image1table = loadTable("data/image1.csv", "header");
-    //console.log(image1table)
 }
 
 function setup(){
@@ -49,7 +48,7 @@ function loadData(){
 
     for(var i=0; i < image1table.getRowCount(); i++){
         var row = image1table.getRow(i);
-        var arcangle = row.get("angle_from_zero"); // getting arc size for each part of the pie chart
+        var arcangle = row.get("angle_not_cummulative"); // getting arc size for each part of the pie chart
         
         image1data[i] = new ImageOne(arcangle);
     }
@@ -69,11 +68,11 @@ class ImageOne {
         var innerCircle = ellipse(650,350,innerCircleW,innerCircleW);
         
         // creating pie chart
-        let lastAngle = 0;
         for(let j=1; j < this.sliceangle.length; j++){
             stroke(150);
             strokeWeight(2);
-            arc(650,350,500,500,lastAngle,lastAngle + this.sliceangle[j])
+            console.log(image1data);
+            arc(650,350,500,500,this.sliceangle[j-1],this.sliceangle[j])
         }
     }
 
