@@ -14,15 +14,30 @@ Current goal: display images inside triangles
 var image1table;
 var triangles;
 var sizes;
+var allimages = [];
+var image1;
+var image2;
+var image3;
+var image4;
+var image5;
+var image6;
+var image7;
 
 function preload(){
     image1table = loadTable("data/image1.csv", "header");
-    var 
+    image1 = loadImage("images/part1.jpg");
+    image2 = loadImage("images/part2.jpg");
+    image3 = loadImage("images/part3.jpg");
+    image4 = loadImage("images/part4.jpg");
+    image5 = loadImage("images/part5.jpg");
+    image6 = loadImage("images/part6.jpg");
+    image7 = loadImage("images/finalpiece.jpg");
 }
 
 function setup(){
     createCanvas(windowWidth,windowHeight);
     loadData();
+    allimages = [image1,image2,image3,image4,image5,image6,image7];
 }
 
 function draw(){
@@ -55,8 +70,7 @@ class triangleGraph{
         stroke(0);
         strokeWeight(1);
         noFill();
-        var timespenth = windowHeight*(1-this.h);
-        var timespentw = (windowWidth/2)*this.h;
+        
         triangle(0,windowHeight,timespenth,timespentw,timespentw*2,windowHeight);
     }
 }
