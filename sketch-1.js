@@ -10,8 +10,9 @@ function preload(){
 
 function setup(){
     createCanvas(windowWidth,windowHeight);
+    loadData();
 }
 
 function draw(){
-
+    background(255);
 }

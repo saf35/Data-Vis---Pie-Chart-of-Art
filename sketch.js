@@ -42,7 +42,7 @@ function draw(){
     }
 }
 
-function loadData(){
+function loadTable(){
     // load csv file into a table object
 
     image1data = []; // array (size depends on table)
