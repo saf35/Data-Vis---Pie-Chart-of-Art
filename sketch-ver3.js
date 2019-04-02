@@ -4,6 +4,10 @@ New sketch, no longer doing pie chart.
 Goal: make a graph that shows how long I spend on each part of a drawing. I will use 
 embedded triangles to demonstrate the relative time I spent on each part.
 
+References:
+    https://p5js.org/reference/#/p5/triangle
+        Triangle function documentation
+
 Current goal: display images inside triangles
 */
 
@@ -13,6 +17,7 @@ var sizes;
 
 function preload(){
     image1table = loadTable("data/image1.csv", "header");
+    var 
 }
 
 function setup(){
